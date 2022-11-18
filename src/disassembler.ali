@@ -1,0 +1,89 @@
+V "GNAT Lib v10"
+A -gnatc
+A -mfloat-abi=hard
+A -mfpu=vfp
+A -mtls-dialect=gnu
+A -marm
+A -march=armv6+fp
+P NO FX
+
+RN
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_IO
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_DEFAULT_INITIALIZATION
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_IMPLEMENTATION_ASPECT_SPECIFICATIONS
+RV NO_IMPLEMENTATION_PRAGMAS
+RV NO_ELABORATION_CODE
+RV SPARK_05
+
+U disassembler%b	disassembler.adb	1b7c0117 OO PK
+W ada%s			ada.ads			ada.ali
+Z ada.io_exceptions%s	a-ioexce.ads		a-ioexce.ali
+W ada.sequential_io%s
+W ada.text_io%s		a-textio.adb		a-textio.ali
+Z ada.text_io.modular_io%s
+W system%s		system.ads		system.ali
+Z system.sequential_io%s  s-sequio.adb		s-sequio.ali
+
+U disassembler%s	disassembler.ads	73fd8474 EE OO PK
+
+D ada.ads		20200723063517 76789da1 ada%s
+D a-ioexce.ads		20200723063517 e4a01f64 ada.io_exceptions%s
+D a-sequio.ads		20200723063517 3573d8ce ada.sequential_io%s
+D a-stream.ads		20200723063517 119b8fb3 ada.streams%s
+D a-textio.ads		20200723063517 aef4d56d ada.text_io%s
+D a-timoio.ads		20200723063517 3b5805c0 ada.text_io.modular_io%s
+D disassembler.ads	20221118133433 73fd8474 disassembler%s
+D disassembler.adb	20221118133950 84e0d382 disassembler%b
+D interfac.ads		20200723063517 5ab55268 interfaces%s
+D i-cstrea.ads		20200723063517 e53d8b8e interfaces.c_streams%s
+D system.ads		20200723063517 77e65b42 system%s
+D s-crtl.ads		20200723063517 0ebbdb71 system.crtl%s
+D s-ficobl.ads		20200723063517 078245e4 system.file_control_block%s
+D s-parame.ads		20200723063517 48ec542b system.parameters%s
+D s-sequio.ads		20200723063517 fc7560a7 system.sequential_io%s
+D s-wchcon.ads		20200723063517 1b7d22d2 system.wch_con%s
+G a e
+G c Z s b [disassemble disassembler 2 14 none]
+X 1 ada.ads
+16K9*Ada 20e8 8|2r6 3r6 9r14 46r14 53r7 61r10 65r7
+X 3 a-sequio.ads
+43k13*Sequential_IO 160e22 8|3w10 46r18
+53P9 File_Type<15|63P9> 8|49r26[45]
+55E9 File_Mode
+55n23 In_File{55E9[8|45]} 8|54r16[45]
+76U14 Open 8|54s7[45]
+82U14 Close 8|64s7[45]
+99U14 Read 8|56s10[45]
+102V13 End_Of_File{boolean} 8|55s17[45]
+X 5 a-textio.ads
+57K13*Text_IO 727e16 8|2w10 9r18 53r11 61r14 65r11
+264U14*New_Line 8|61s22
+508U14*Put_Line 8|53s19 65s19
+X 6 a-timoio.ads
+44M9 Num 8|9r38
+46k21*Modular_IO 108e27 8|9r26
+80U14 Put 8|57s20[8] 58s20[8] 59s20[8] 60s20[8]
+X 7 disassembler.ads
+1K9*Disassembler 3l5 3e17 8|5b14 67l5 67t17
+2U14*Disassemble 2>27 8|6b14 66l8 66t19
+2a27 Binary_File_Name{string} 8|6b27 54r25
+X 8 disassembler.adb
+7M12 Nibble 9r45 13r24 14r24 15r24 16r24
+8K15 Nibble_IO[6|46] 57r10 58r10 59r10 60r10
+11R12 Instruction 17e21 18r11 46r33 51r15 53r29
+13m13 Nibble_1{7M12} 20r13 57r31
+14m13 Nibble_2{7M12} 21r13 58r31
+15m13 Nibble_3{7M12} 22r13 59r31
+16m13 Nibble_4{7M12} 23r13 60r31
+45K15 Instruction_IO[3|43] 47r11 49r11
+49p7 F{3|53P9[45]} 54m13 54r13 55r30 56r16 64m14 64r14
+50i7 Bytes_Read{natural} 62m10 62r24 65r45
+51r7 Value{11R12} 56m19 57r25 58r25 59r25 60r25
+X 11 system.ads
+37K9*System 8|1w6 11|157e11
+X 15 s-sequio.ads
+63P9*File_Type(43R9)
+

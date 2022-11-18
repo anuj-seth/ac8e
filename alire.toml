@@ -1,0 +1,9 @@
+name = "ac8e"
+description = "Shiny new project"
+version = "0.0.0"
+
+authors = ["Anuj Seth"]
+maintainers = ["Anuj Seth <anujseth76@gmail.com>"]
+maintainers-logins = ["anuj-seth"]
+
+executables = ["ac8e"]
