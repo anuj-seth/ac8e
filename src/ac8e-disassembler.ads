@@ -1,3 +1,3 @@
-package Disassembler is
+package Ac8e.Disassembler is
    procedure Disassemble (Binary_File_Name : String);
-end Disassembler;
+end Ac8e.Disassembler;

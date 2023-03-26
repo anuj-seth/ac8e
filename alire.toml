@@ -6,4 +6,4 @@ authors = ["Anuj Seth"]
 maintainers = ["Anuj Seth <anujseth76@gmail.com>"]
 maintainers-logins = ["anuj-seth"]
 
-executables = ["ac8e"]
+executables = ["run_ac8e"]
