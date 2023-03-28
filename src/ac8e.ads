@@ -7,4 +7,5 @@ package Ac8e is
 
    type Byte is mod 2**8;
    type Byte_Array is array (Natural range <>) of Byte;
+   subtype Machine_Code is Byte_Array (1 .. 2);
 end Ac8e;

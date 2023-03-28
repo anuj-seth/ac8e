@@ -1,9 +1,11 @@
 package Ac8e.Random_Access_Memory is
    subtype Memory_Location is Natural range 0 .. 4095;
 
+   procedure Load_Rom (Rom_File_Name : String; Bytes_Loaded : out Natural);
    function Read (Address : Memory_Location) return Byte;
-   function Read (Address : Memory_Location; Bytes_To_Read : Positive)
-      return Byte_Array;
+   procedure Read (Address : Memory_Location; 
+                   Bytes_To_Read : Positive;
+                   Buffer : out Byte_Array); 
 
    procedure Write (Address : Memory_Location; Value : Byte);
    procedure Write (Address : Memory_Location; Values : Byte_Array);
