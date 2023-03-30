@@ -1,5 +1,8 @@
 with Ac8e.Instruction.Clear_Screen;
 with Ac8e.Instruction.Return_From_Subroutine;
+with Ac8e.Instruction.Jump;
+with Ac8e.Instruction.Call_Subroutine;
+with Ac8e.Instruction.Call_Sys;
 
 package body Ac8e.Instruction_Creator is
    type Machine_Code_Nibbles is
@@ -40,11 +43,11 @@ package body Ac8e.Instruction_Creator is
          end;
       else
          declare
-            use Ac8e.Instruction;
-            I : Instruction_Type;
+            use Ac8e.Instruction.Call_Sys;
+            C : Call_Sys_Type;
          begin
-            Create (Op => Op, I => I);
-            return I;
+            Create (Op => Op, C => C);
+            return C;
          end;
       end if;
    end Opcode_0;
@@ -56,6 +59,22 @@ package body Ac8e.Instruction_Creator is
       To_Machine_Code_Nibbles (Op => Op, Nibbles => Op_Nibbles);
       case Op_Nibbles.Nibble_1 is
          when 0 => return Opcode_0 (Op => Op);
+         when 1 =>
+            declare
+               use Ac8e.Instruction.Jump;
+               J : Jump_Type;
+            begin
+               Create (Op => Op, J => J);
+               return J;
+            end;
+         when 2 =>
+            declare
+               use Ac8e.Instruction.Call_Subroutine;
+               Cs : Call_Subroutine_Type;
+            begin
+               Create (Op => Op, C => Cs);
+               return Cs;
+            end;
          when others =>
             declare
                I : Ac8e.Instruction.Instruction_Type;

@@ -3,9 +3,9 @@ package Ac8e.Random_Access_Memory is
 
    procedure Load_Rom (Rom_File_Name : String; Bytes_Loaded : out Natural);
    function Read (Address : Memory_Location) return Byte;
-   procedure Read (Address : Memory_Location; 
+   procedure Read (Address : Memory_Location;
                    Bytes_To_Read : Positive;
-                   Buffer : out Byte_Array); 
+                   Buffer : out Byte_Array);
 
    procedure Write (Address : Memory_Location; Value : Byte);
    procedure Write (Address : Memory_Location; Values : Byte_Array);

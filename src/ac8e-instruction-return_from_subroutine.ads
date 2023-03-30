@@ -1,6 +1,7 @@
 package Ac8e.Instruction.Return_From_Subroutine is
    type Return_From_Subroutine_Type is new Instruction_Type with private;
 
+   overriding
    procedure Create (Op : Machine_Code; R : out Return_From_Subroutine_Type);
 
    overriding

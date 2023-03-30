@@ -31,8 +31,8 @@ package body Ac8e.Random_Access_Memory is
    function Read (Address : Memory_Location) return Byte is
       (Memory (Address));
 
-   procedure Read (Address : Memory_Location; 
-                   Bytes_To_Read : Positive; 
+   procedure Read (Address : Memory_Location;
+                   Bytes_To_Read : Positive;
                    Buffer : out Byte_Array) is
       Last_Address : Memory_Location;
    begin

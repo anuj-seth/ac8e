@@ -8,7 +8,7 @@ package body Ac8e.Instruction is
 
    procedure Execute (I : Instruction_Type) is
    begin
-      raise Instruction_Not_Implemented 
+      raise Instruction_Not_Implemented
          with Ac8e.Hex_Utils.Hex (I.Machine_Instruction);
    end Execute;
 

@@ -1,6 +1,7 @@
 package Ac8e.Instruction.Clear_Screen is
    type Clear_Screen_Type is new Instruction_Type with private;
 
+   overriding
    procedure Create (Op : Machine_Code; C : out Clear_Screen_Type);
 
    overriding
