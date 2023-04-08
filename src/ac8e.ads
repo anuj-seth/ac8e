@@ -5,7 +5,8 @@ package Ac8e is
    package Nibble_IO is
       new Ada.Text_IO.Modular_IO (Num => Nibble);
 
-   type Byte is mod 2**8;
+   type Byte is --  new Natural range 0 .. 255 with Size => 8;
+      mod 2**8;
    type Byte_Array is array (Natural range <>) of Byte;
    subtype Machine_Code is Byte_Array (1 .. 2);
 end Ac8e;
