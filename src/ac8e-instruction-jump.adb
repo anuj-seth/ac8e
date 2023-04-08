@@ -9,7 +9,7 @@ package body Ac8e.Instruction.Jump is
 
    overriding
    procedure Create (Op : Machine_Code; J : out Jump_Type) is
-      Jump_To_Address : constant RAM.Memory_Location 
+      Jump_To_Address : constant RAM.Memory_Location
          := U.Lower_Three_Nibbles_Value (Op);
    begin
       Ac8e.Instruction.Create (Op => Op, I => Instruction_Type (J));
@@ -20,4 +20,3 @@ package body Ac8e.Instruction.Jump is
    function Put (J : Jump_Type) return String is
       ("JMP " & HU.Hex (J.Jump_To));
 end Ac8e.Instruction.Jump;
-

@@ -6,7 +6,7 @@ package Ac8e.Instruction.Call_Subroutine is
 
    overriding
    procedure Create (Op : Machine_Code; C : out Call_Subroutine_Type);
-   
+
    overriding
    function Put (C : Call_Subroutine_Type) return String;
 
@@ -16,6 +16,3 @@ private
          Subroutine_Address : RAM.Memory_Location;
       end record;
 end Ac8e.Instruction.Call_Subroutine;
-
-
-
