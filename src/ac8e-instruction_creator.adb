@@ -3,6 +3,9 @@ with Ac8e.Instruction.Return_From_Subroutine;
 with Ac8e.Instruction.Jump;
 with Ac8e.Instruction.Call_Subroutine;
 with Ac8e.Instruction.Call_Sys;
+with Ac8e.Instruction.Skip.Byte_Rhs.Equal;
+with Ac8e.Instruction.Skip.Byte_Rhs.Not_Equal;
+with Ac8e.Instruction.Skip.Register_Rhs.Equal;
 
 package body Ac8e.Instruction_Creator is
    type Machine_Code_Nibbles is
@@ -74,6 +77,30 @@ package body Ac8e.Instruction_Creator is
             begin
                Create (Op => Op, C => Cs);
                return Cs;
+            end;
+         when 3 =>
+            declare
+               use Ac8e.Instruction.Skip.Byte_Rhs.Equal;
+               Se : Skip_Byte_Rhs_Equal_Type;
+            begin
+               Create (Op => Op, Se => Se);
+               return Se;
+            end;
+         when 4 =>
+            declare
+               use Ac8e.Instruction.Skip.Byte_Rhs.Not_Equal;
+               Sne : Skip_Byte_Rhs_Not_Equal_Type;
+            begin
+               Create (Op => Op, Sne => Sne);
+               return Sne;
+            end;
+         when 5 =>
+            declare
+               use Ac8e.Instruction.Skip.Register_Rhs.Equal;
+               Se : Skip_Register_Rhs_Equal_Type;
+            begin
+               Create (Op => Op, Se => Se);
+               return Se;
             end;
          when others =>
             declare

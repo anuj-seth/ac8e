@@ -1,5 +1,4 @@
 package Ac8e.Instruction is
-   subtype Instruction_Categories is Natural range 0 .. 15;
    type Instruction_Type is tagged private;
    type Instruction_Access is access Instruction_Type'Class;
 
