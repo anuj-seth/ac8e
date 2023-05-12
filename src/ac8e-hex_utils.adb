@@ -20,4 +20,5 @@ package body Ac8e.Hex_Utils is
    begin
       return (Hex (One_Byte => Upper_Byte) & Hex (One_Byte => Lower_Byte));
    end Hex;
+
 end Ac8e.Hex_Utils;
