@@ -1,6 +1,3 @@
-with Ac8e.Instruction;
-
-package Ac8e.Instruction_Creator is
-   function Create (Op : Machine_Code)
-      return Ac8e.Instruction.Instruction_Type'Class;
-end Ac8e.Instruction_Creator;
+package Ac8e.Instruction.Executor is
+   procedure Execute (I : Instruction_Type);
+end Ac8e.Instruction.Executor;

@@ -41,7 +41,8 @@ package body Ac8e.Random_Access_Memory is
       end if;
 
       Last_Address := Address + Bytes_To_Read - 1;
-      Buffer (Buffer'First .. Bytes_To_Read) := Memory (Address .. Last_Address);
+      Buffer (Buffer'First .. Bytes_To_Read)
+         := Memory (Address .. Last_Address);
    end Read;
 
    procedure Write (Address : Memory_Location; Value : Byte) is

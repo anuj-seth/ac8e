@@ -25,22 +25,22 @@ package body Ac8e.Instruction.Printer is
 
    function Opcode_3 (I : Instruction_Type)
       return String is
-      ("SE V[" 
-       & HU.Hex (One_Byte => Byte (I.X)) 
-       & "], " 
+      ("SE V["
+       & HU.Hex (One_Byte => Byte (I.X))
+       & "], "
        & HU.Hex (One_Byte => I.KK));
 
    function Opcode_4 (I : Instruction_Type)
       return String is
-      ("SNE V[" 
-       & HU.Hex (One_Byte => Byte (I.X)) 
-       & "], " 
+      ("SNE V["
+       & HU.Hex (One_Byte => Byte (I.X))
+       & "], "
        & HU.Hex (One_Byte => I.KK));
 
    function Opcode_5 (I : Instruction_Type)
       return String is
-      ("SE V[" & HU.Hex (One_Byte => Byte (I.X)) 
-       & "], V[" 
+      ("SE V[" & HU.Hex (One_Byte => Byte (I.X))
+       & "], V["
        & HU.Hex (One_Byte => Byte (I.Y))
        & "]");
 
@@ -51,7 +51,7 @@ package body Ac8e.Instruction.Printer is
    type Instruction_Printer_Type is access function (I : Instruction_Type)
       return String;
 
-   Dispatch_Print : constant array (Op_Code) of Instruction_Printer_Type 
+   Dispatch_Print : constant array (Op_Code) of Instruction_Printer_Type
       := (0 => Opcode_0'access,
           1 => Opcode_1'access,
           2 => Opcode_2'access,
