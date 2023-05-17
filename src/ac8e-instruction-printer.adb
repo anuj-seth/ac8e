@@ -44,6 +44,13 @@ package body Ac8e.Instruction.Printer is
        & HU.Hex (One_Byte => Byte (I.Y))
        & "]");
 
+   function Opcode_6 (I : Instruction_Type)
+      return String is
+      ("LD V["
+       & HU.Hex (One_Byte => Byte (I.X))
+       & "], "
+       & HU.Hex (One_Byte => I.KK));
+
    function Printer_Not_Implemented (I : Instruction_Type)
       return String is
       (HU.Hex (M => I.Machine_Instruction) & " : Not Implemented yet.");
@@ -58,6 +65,7 @@ package body Ac8e.Instruction.Printer is
           3 => Opcode_3'access,
           4 => Opcode_4'access,
           5 => Opcode_5'access,
+          6 => Opcode_6'access,
           others => Printer_Not_Implemented'access);
 
    function Put (I : Instruction_Type) return String is
