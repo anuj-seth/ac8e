@@ -3,7 +3,7 @@ with Ac8e.Hex_Utils;
 package body Ac8e.Instruction.Printer is
    package HU renames Ac8e.Hex_Utils;
 
-   function Opcode_0 (I : Instruction_Type)
+   function Opcode_0 (I : Decoded_Instruction)
       return String is
    begin
       if I.X = 16#00# and then I.KK = 16#E0# then
@@ -15,50 +15,50 @@ package body Ac8e.Instruction.Printer is
       end if;
    end Opcode_0;
 
-   function Opcode_1 (I : Instruction_Type)
+   function Opcode_1 (I : Decoded_Instruction)
       return String is
       ("JMP " & HU.Hex (I.NNN));
 
-   function Opcode_2 (I : Instruction_Type)
+   function Opcode_2 (I : Decoded_Instruction)
       return String is
       ("CALL " & HU.Hex (I.NNN));
 
-   function Opcode_3 (I : Instruction_Type)
+   function Opcode_3 (I : Decoded_Instruction)
       return String is
       ("SE V["
        & HU.Hex (One_Byte => Byte (I.X))
        & "], "
        & HU.Hex (One_Byte => I.KK));
 
-   function Opcode_4 (I : Instruction_Type)
+   function Opcode_4 (I : Decoded_Instruction)
       return String is
       ("SNE V["
        & HU.Hex (One_Byte => Byte (I.X))
        & "], "
        & HU.Hex (One_Byte => I.KK));
 
-   function Opcode_5 (I : Instruction_Type)
+   function Opcode_5 (I : Decoded_Instruction)
       return String is
       ("SE V[" & HU.Hex (One_Byte => Byte (I.X))
        & "], V["
        & HU.Hex (One_Byte => Byte (I.Y))
        & "]");
 
-   function Opcode_6 (I : Instruction_Type)
+   function Opcode_6 (I : Decoded_Instruction)
       return String is
       ("LD V["
        & HU.Hex (One_Byte => Byte (I.X))
        & "], "
        & HU.Hex (One_Byte => I.KK));
 
-   function Printer_Not_Implemented (I : Instruction_Type)
+   function Printer_Not_Implemented (I : Decoded_Instruction)
       return String is
       (HU.Hex (M => I.Machine_Instruction) & " : Not Implemented yet.");
 
-   type Instruction_Printer_Type is access function (I : Instruction_Type)
+   type Instruction_Printer is access function (I : Decoded_Instruction)
       return String;
 
-   Dispatch_Print : constant array (Op_Code) of Instruction_Printer_Type
+   Dispatch_Print : constant array (Op_Code) of Instruction_Printer
       := (0 => Opcode_0'Access,
           1 => Opcode_1'Access,
           2 => Opcode_2'Access,
@@ -68,6 +68,6 @@ package body Ac8e.Instruction.Printer is
           6 => Opcode_6'Access,
           others => Printer_Not_Implemented'Access);
 
-   function Put (I : Instruction_Type) return String is
+   function Put (I : Decoded_Instruction) return String is
       (Dispatch_Print (I.Operation) (I => I));
 end Ac8e.Instruction.Printer;

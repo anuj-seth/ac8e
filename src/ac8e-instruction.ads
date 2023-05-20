@@ -7,14 +7,14 @@ package Ac8e.Instruction is
    subtype Op_Code is Byte range 0 .. 15;
       --  with Static_Predicate => Op_Code in 0 .. 15;
    --  TODO no longer needs to be tagged
-   type Instruction_Type is private;
+   type Decoded_Instruction is private;
 
    Instruction_Not_Implemented : exception;
 
-   function Create (Op : Machine_Code) return Instruction_Type;
+   function Create (Op : Machine_Code) return Decoded_Instruction;
 
 private
-   type Instruction_Type is
+   type Decoded_Instruction is
       record
          Machine_Instruction : Machine_Code;
          Operation : Op_Code;

@@ -1,17 +1,17 @@
 with Ac8e.Hex_Utils;
 
 package body Ac8e.Instruction.Executor is
-   procedure Executor_Not_Implemented (I : Instruction_Type) is
+   procedure Executor_Not_Implemented (I : Decoded_Instruction) is
    begin
       raise Instruction_Not_Implemented
          with Ac8e.Hex_Utils.Hex (I.Machine_Instruction);
    end Executor_Not_Implemented;
 
-   type Instruction_Executor_Type is access procedure (I : Instruction_Type);
-   Dispatch_Execute : array (Op_Code) of Instruction_Executor_Type
-      := (others => Executor_Not_Implemented'access);
+   type Instruction_Executor is access procedure (I : Decoded_Instruction);
+   Dispatch_Execute : array (Op_Code) of Instruction_Executor
+      := (others => Executor_Not_Implemented'Access);
 
-   procedure Execute (I : Instruction_Type) is
+   procedure Execute (I : Decoded_Instruction) is
    begin
       Dispatch_Execute (I.Operation) (I => I);
    end Execute;

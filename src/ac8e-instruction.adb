@@ -3,7 +3,7 @@ with Ac8e.Instruction_Decoder;
 package body Ac8e.Instruction is
    package ID renames Ac8e.Instruction_Decoder;
 
-   function Create (Op : Machine_Code) return Instruction_Type is
+   function Create (Op : Machine_Code) return Decoded_Instruction is
       (Machine_Instruction => Op,
        Operation => ID.Op_Code (Op),
        X => ID.X (Op),

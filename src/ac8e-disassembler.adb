@@ -5,7 +5,6 @@ with Ac8e.Instruction;
 with Ac8e.Instruction.Printer;
 
 package body Ac8e.Disassembler is
-
    package TIO renames Ada.Text_IO;
 
    procedure Disassemble (From_Address : RAM.Memory_Location;
@@ -29,7 +28,7 @@ package body Ac8e.Disassembler is
          TIO.Put (Ac8e.Hex_Utils.Hex (M => Two_Bytes));
          TIO.Put (" ");
          declare
-            I : constant Instruction.Instruction_Type
+            I : constant Instruction.Decoded_Instruction
                := Instruction.Create (Op => Two_Bytes);
          begin
             TIO.Put (Instruction.Printer.Put (I => I));
