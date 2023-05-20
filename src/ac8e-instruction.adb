@@ -1,4 +1,3 @@
-with Ac8e.Hex_Utils;
 with Ac8e.Instruction_Decoder;
 
 package body Ac8e.Instruction is

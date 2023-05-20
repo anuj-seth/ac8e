@@ -1,4 +1,3 @@
-with Ada.Text_IO;
 with Ada.Sequential_IO;
 
 package body Ac8e.Random_Access_Memory is

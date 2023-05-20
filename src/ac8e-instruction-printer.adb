@@ -59,14 +59,14 @@ package body Ac8e.Instruction.Printer is
       return String;
 
    Dispatch_Print : constant array (Op_Code) of Instruction_Printer_Type
-      := (0 => Opcode_0'access,
-          1 => Opcode_1'access,
-          2 => Opcode_2'access,
-          3 => Opcode_3'access,
-          4 => Opcode_4'access,
-          5 => Opcode_5'access,
-          6 => Opcode_6'access,
-          others => Printer_Not_Implemented'access);
+      := (0 => Opcode_0'Access,
+          1 => Opcode_1'Access,
+          2 => Opcode_2'Access,
+          3 => Opcode_3'Access,
+          4 => Opcode_4'Access,
+          5 => Opcode_5'Access,
+          6 => Opcode_6'Access,
+          others => Printer_Not_Implemented'Access);
 
    function Put (I : Instruction_Type) return String is
       (Dispatch_Print (I.Operation) (I => I));

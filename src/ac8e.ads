@@ -8,6 +8,7 @@ package Ac8e is
    type Byte is new Natural range 0 .. 255
       with Size => 8;
       --  mod 2**8;
+   subtype Op_Code_As_Byte is Byte range 0 .. 15;
    type Byte_Array is array (Natural range <>) of Byte;
    subtype Machine_Code is Byte_Array (1 .. 2);
 end Ac8e;
