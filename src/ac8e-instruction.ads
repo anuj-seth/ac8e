@@ -12,6 +12,7 @@ package Ac8e.Instruction is
    Instruction_Not_Implemented : exception;
 
    function Create (Op : Machine_Code) return Decoded_Instruction;
+   function Is_Instruction (Op : Machine_Code) return Boolean;
 
 private
    type Decoded_Instruction is

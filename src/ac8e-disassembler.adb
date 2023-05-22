@@ -27,12 +27,16 @@ package body Ac8e.Disassembler is
          TIO.Put (" ");
          TIO.Put (Ac8e.Hex_Utils.Hex (M => Two_Bytes));
          TIO.Put (" ");
-         declare
-            I : constant Instruction.Decoded_Instruction
-               := Instruction.Create (Op => Two_Bytes);
-         begin
-            TIO.Put (Instruction.Printer.Put (I => I));
-         end;
+         if Instruction.Is_Instruction (Op => Two_Bytes) then
+            declare
+               I : constant Instruction.Decoded_Instruction
+                  := Instruction.Create (Op => Two_Bytes);
+            begin
+               TIO.Put (Instruction.Printer.Put (I => I));
+            end;
+         else
+            TIO.Put ("DATA");
+         end if;
          TIO.New_Line;
          Instruction_Number := Instruction_Number + 1;
          Read_Address := Read_Address + 2;
