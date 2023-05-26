@@ -21,7 +21,7 @@ package body Ac8e.Instruction.Printer is
 
    function Opcode_2 (I : Decoded_Instruction)
       return String is
-      ("CALL " & HU.Hex (I.NNN));
+      ("CALL " & HU.Hex (Loc => I.NNN));
 
    function Opcode_3 (I : Decoded_Instruction)
       return String is
@@ -51,6 +51,18 @@ package body Ac8e.Instruction.Printer is
        & "], "
        & HU.Hex (One_Byte => I.KK));
 
+   function Opcode_7 (I : Decoded_Instruction)
+      return String is
+      ("ADD V["
+       & HU.Hex (One_Byte => Byte (I.X))
+       & "], "
+       & HU.Hex (One_Byte => I.KK));
+
+   function Opcode_A (I : Decoded_Instruction)
+      return String is
+      ("LD I, "
+       & HU.Hex (Loc => I.NNN));
+   
    function Printer_Not_Implemented (I : Decoded_Instruction)
       return String is
       (HU.Hex (M => I.Machine_Instruction) & " : Not Implemented yet.");
@@ -66,6 +78,8 @@ package body Ac8e.Instruction.Printer is
           4 => Opcode_4'Access,
           5 => Opcode_5'Access,
           6 => Opcode_6'Access,
+          7 => Opcode_7'Access,
+          16#A# => Opcode_A'Access,
           others => Printer_Not_Implemented'Access);
 
    function Put (I : Decoded_Instruction) return String is
